@@ -1,0 +1,63 @@
+body {
+    font-family: 'Comic Sans MS', sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    max-width: 2000px;
+    margin: 5px auto;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.navbar {
+    background-color: #008080;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+}
+
+.navbar a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    text-align: center;
+    padding: 8px;
+    font-size: 0.8em;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.graph-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.graph-container img {
+    max-width: 100%;
+    height: auto;
+}

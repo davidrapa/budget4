@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+
+    <title>Budget Graph</title>
+</head>
+<body>
+    <div class="navbar">
+        <a href="{{ url_for('index') }}">Home</a>
+        <a href="#">About</a>
+        <a href="{{ url_for('login') }}">Login</a>
+        <a href="#">Contact</a>
+    </div>
+    <br>
+       <h1>Budget Graph</h1>
+    <br>
+    <div class="container">
+        <form method="POST">
+            <table>
+                <tr>
+                    <th></th>
+                    {% for i in range(1, 13) %}
+                    <th>{{ i }}</th>
+                    {% endfor %}
+                </tr>
+                <tr>
+                    <th>Income</th>
+                    {% for i in range(1, 13) %}
+                    <td><input type="number" step="0.01" name="ingresos_{{ i }}" value="{{ data.get('ingresos_' + i|string, '') }}"></td>
+                    {% endfor %}
+                </tr>
+                <tr>
+                    <th>Expenses</th>
+                </tr>
+                <tr>
+                    <th>CreditC</th>
+                    {% for i in range(1, 13) %}
+                    <td><input type="number" step="0.01" name="gastos_tarjeta_de_credito_{{ i }}" value="{{ data.get('gastos_tarjeta_de_credito_' + i|string, '') }}"></td>
+                    {% endfor %}
+                </tr>
+                <tr>
+                    <th>Car</th>
+                    {% for i in range(1, 13) %}
+                    <td><input type="number" step="0.01" name="gastos_auto_{{ i }}" value="{{ data.get('gastos_auto_' + i|string, '') }}"></td>
+                    {% endfor %}
+                </tr>
+                <tr>
+                    <th>Rent</th>
+                    {% for i in range(1, 13) %}
+                    <td><input type="number" step="0.01" name="gastos_alquiler_{{ i }}" value="{{ data.get('gastos_alquiler_' + i|string, '') }}"></td>
+                    {% endfor %}
+                </tr>
+                <tr>
+                    <th>Total</th>
+                    {% for i in range(1, 13) %}
+                    <td>{{ total.get(i, '') }}</td>
+                    {% endfor %}
+                </tr>
+            </table>
+            <input type="submit" name="action" value="Actualizar">
+            <input type="submit" name="action" value="Resta">
+        </form>
+
+        {% if total %}
+        <div class="graph-container">
+            <img src="{{ url_for('static', filename='graph.png') }}" alt="Gráfico">
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
