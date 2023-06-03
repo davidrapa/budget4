@@ -1,4 +1,4 @@
-    import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 import numpy as np
 from flask import Flask, render_template, request
 
@@ -56,4 +56,11 @@ def plot_graph(total):
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5001)
+    import os
+
+    if os.environ.get('VERCEL') is not None:
+        # This is running on Vercel.
+        app.run(host='0.0.0.0', port=80)
+    else:
+        # This is running locally.
+        app.run(host='127.0.0.1', port=5001, debug=True)
